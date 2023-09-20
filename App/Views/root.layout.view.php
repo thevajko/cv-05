@@ -28,6 +28,21 @@
             <li class="nav-item">
                 <a class="nav-link" href="?c=home&a=contact">Kontakt</a>
             </li>
+            <li class="nav-item">
+                <a class="nav-link" href="?c=home&a=factorial">Faktoriál</a>
+            </li>
+            <li class="nav-item">
+                <div class="dropdown">
+                    <a class="btn btn-secondary dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                        Osoby
+                    </a>
+
+                    <ul class="dropdown-menu">
+                        <li><a class="dropdown-item" href="?c=person">Zoznam</a></li>
+                        <li><a class="dropdown-item" href="?c=person&a=statistics">Štatistiky</a></li>
+                    </ul>
+                </div>
+            </li>
         </ul>
         <?php if ($auth->isLogged()) { ?>
             <span class="navbar-text">Prihlásený používateľ: <b><?= $auth->getLoggedUserName() ?></b></span>

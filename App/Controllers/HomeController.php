@@ -4,6 +4,7 @@ namespace App\Controllers;
 
 use App\Core\AControllerBase;
 use App\Core\Responses\Response;
+use App\Helpers\Calculations;
 
 /**
  * Class HomeController
@@ -39,4 +40,18 @@ class HomeController extends AControllerBase
     {
         return $this->html();
     }
+
+    public function factorial() : Response {
+        $fact = 12;
+        return $this->html([
+            'number' => $fact,
+            'result' => Calculations::factorial(12)
+        ]);
+    }
+    public function headings() : Response {
+        return $this->html([
+            'count' => 10
+        ]);
+    }
+
 }
