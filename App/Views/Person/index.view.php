@@ -3,10 +3,16 @@ use App\Models\Person;
 
 /** @var Array $data */
 /** @var Person[] $persons */
+/** @var \App\Core\Request $request */
 
+$request = $data['request'];
 $persons = $data['persons'];
-$urlStart = "?c=person&sort=";
+$urlStart = "?c=person&year={$request->getValue('year')}&sort=";
 $sortingOrder = $data['sortingOrder'];
+$yearsArray = "&order=".$request->getValue('order').$data['yearsArray'];
+
+$sortUrl = $urlStart.$request->getValue('sort');
+
 ?>
 <div class="row">
     <div class="col">
@@ -28,5 +34,11 @@ $sortingOrder = $data['sortingOrder'];
                 </tr>
             <?php } ?>
         </table>
+        <div class="d-flex gap-1">
+            <a href="<?php echo $sortUrl."&year=" ?>" class="btn btn-primary">Všetky roky</a>
+            <?php foreach ($yearsArray as $year) { ?>
+                <a href="<?php echo $sortUrl."&year=".$year ?>" class="btn btn-primary"><?php echo $year?></a>
+            <?php } ?>
+        </div>
     </div>
 </div>

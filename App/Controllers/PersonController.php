@@ -7,6 +7,7 @@ use App\Core\Responses\Response;
 use App\Helpers\PersonsLoader;
 use App\Helpers\PersonSorter;
 use App\Helpers\PersonsStats;
+use App\Helpers\PersonYearFilter;
 
 class PersonController extends AControllerBase
 {
@@ -22,11 +23,20 @@ class PersonController extends AControllerBase
         // sorts the persons in array
         $persons = PersonSorter::sort($persons, !empty($sortBy) ? $sortBy : "s", $sortingOrder );
 
+        $yearsArray = PersonYearFilter::getYearsArray($persons);
+        $filterYear = $this->request()->getValue('year');
+
+        if ($filterYear) {
+            $persons = PersonYearFilter::filterByYear($persons, $filterYear);
+        }
+
         $sortingOrder = $sortingOrder == 1 ? -1 : 1;
 
         return $this->html([
             'persons' => $persons,
-            'sortingOrder' => $sortingOrder
+            'sortingOrder' => $sortingOrder,
+            'yearsArray' => $yearsArray,
+            'request' => $this->request()
         ]);
 
     }
