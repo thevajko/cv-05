@@ -15,9 +15,12 @@ class PersonSorter
      * @param $asc order of sorting. 1=ASC -1=DESC
      * @return Osoba[]
      */
-    public static function sort($array, $param, $asc = 1){
+    public static function sort($array, $param, $asc){
         // Collator is needed to correctly sort strings with diacritics
          $c = new Collator('sk');
+
+         // turn all other values except for 1 to -1
+         $asc = $asc != 1 ? -1 : 1;
 
          // using usort with callback, so is possible to use custom sorting logic
          usort($array, function (Person $a, Person $b) use ($c, $asc, $param) {
