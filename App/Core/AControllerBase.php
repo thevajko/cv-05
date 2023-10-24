@@ -19,13 +19,13 @@ abstract class AControllerBase
      * Reference to APP object instance
      * @var App
      */
-     protected App $app;
+    protected App $app;
 
     /**
      * Returns controller name (without Controller prefix)
      * @return string
      */
-    public function getName()  : string
+    public function getName(): string
     {
         return str_replace("Controller", "", $this->getClassName());
     }
@@ -34,7 +34,7 @@ abstract class AControllerBase
      * Return full class name
      * @return string
      */
-    public function getClassName()
+    public function getClassName(): string
     {
         $arr = explode("\\", get_class($this));
         return end($arr);
@@ -55,7 +55,7 @@ abstract class AControllerBase
      * @param null $viewName
      * @return ViewResponse
      */
-    protected function html($data = null, $viewName = null) : ViewResponse
+    protected function html($data = null, $viewName = null): ViewResponse
     {
         if ($viewName == null) {
             $viewName = $this->app->getRouter()->getControllerName() . DIRECTORY_SEPARATOR . $this->app->getRouter()->getAction();
@@ -70,7 +70,7 @@ abstract class AControllerBase
      * @param $data
      * @return JsonResponse
      */
-    public function json($data) : JsonResponse
+    protected function json($data): JsonResponse
     {
         return new JsonResponse($data);
     }
@@ -80,7 +80,7 @@ abstract class AControllerBase
      * @param string $redirectUrl
      * @return RedirectResponse
      */
-    public function redirect(string $redirectUrl) : RedirectResponse
+    protected function redirect(string $redirectUrl): RedirectResponse
     {
         return new RedirectResponse($redirectUrl);
     }
@@ -89,9 +89,17 @@ abstract class AControllerBase
      * Helper method for request
      * @return Request
      */
-    public function request() : Request
+    protected function request(): Request
     {
         return $this->app->getRequest();
+    }
+
+    /**
+     * @see LinkGenerator::url()
+     */
+    protected function url(string|array $destination, array $parameters = [], bool $absolute = false, bool $appendParameters = false) : string
+    {
+        return $this->app->getLinkGenerator()->url($destination, $parameters, $absolute, $appendParameters);
     }
 
     /**

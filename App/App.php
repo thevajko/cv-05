@@ -3,8 +3,10 @@
 namespace App;
 
 use App\Config\Configuration;
+use App\Core\HTTPException;
 use App\Core\IAuthenticator;
 use App\Core\DB\Connection;
+use App\Core\LinkGenerator;
 use App\Core\Request;
 use App\Core\Responses\RedirectResponse;
 use App\Core\Responses\Response;
@@ -27,6 +29,8 @@ class App
      */
     private Request $request;
 
+    private LinkGenerator $linkGenerator;
+
     private ?IAuthenticator $auth;
 
     /**
@@ -36,6 +40,7 @@ class App
     {
         $this->router = new Router();
         $this->request = new Request();
+        $this->linkGenerator = new LinkGenerator($this->request, $this->router);
 
         // Check if there is an authenticator
         if (defined('\\App\\Config\\Configuration::AUTH_CLASS')) {
@@ -54,35 +59,51 @@ class App
     {
         ob_start();
 
-        // get a controller and action from URL
-        $this->router->processURL();
+        try {
+            // get a controller and action from URL
+            $this->router->processURL();
 
-        //inject app into Controller
-        call_user_func([$this->router->getController(), 'setApp'], $this);
+            // inject app into Controller
+            call_user_func([$this->router->getController(), 'setApp'], $this);
 
+            // try to authorize action
+            if ($this->router->getController()->authorize($this->router->getAction())) {
+                // call appropriate method of the controller class
+                $response = call_user_func([$this->router->getController(), $this->router->getAction()]);
 
-        if ($this->router->getController()->authorize($this->router->getAction())) {
-            // call appropriate method of the controller class
-            $response = call_user_func([$this->router->getController(), $this->router->getAction()]);
-            // return view to user
-            if ($response instanceof Response) {
-                $response->generate();
+                // return view to user
+                if ($response instanceof Response) {
+                    $response->send();
+                } else {
+                    throw new \Exception("Action {$this->router->getFullControllerName()}::{$this->router->getAction()} didn't return an instance of Response.");
+                }
             } else {
-                throw new \Exception("Action {$this->router->getFullControllerName()}::{$this->router->getAction()} didn't return an instance of Response.");
+                if ($this->auth->isLogged() || !defined('\\App\\Config\\Configuration::LOGIN_URL')) {
+                    throw new HTTPException(403);
+                } else {
+                    (new RedirectResponse(Configuration::LOGIN_URL))->send();
+                }
             }
-        } else {
-            if ($this->auth->isLogged() || !defined('\\App\\Config\\Configuration::LOGIN_URL')) {
-                http_response_code(403);
-                echo '<h1>403 Forbidden</h1>';
-            } else {
-                (new RedirectResponse(Configuration::LOGIN_URL))->generate();
+        } catch (\Throwable $exception) {
+            //Clears partially rendered content
+            ob_end_clean();
 
+            // if not HTTP exception wrap it to one
+            if (!($exception instanceof HTTPException)) {
+                $exception = HTTPException::from($exception);
             }
+            // get handler instance
+            $errorHandler = new (Configuration::ERROR_HANDLER_CLASS)();
+            // handle error and send response
+            $errorHandler->handleError($this, $exception)->send();
         }
 
         // if SQL debugging in configuration is allowed, display all SQL queries
-        if (Configuration::DEBUG_QUERY) {
-            $queries = array_map(function ($q) {$lines = explode("\n", $q); return '<pre>' . (substr($lines[1], 0, 7) == 'Params:'? 'Sent '.$lines[0] : $lines[1]) .'</pre>';} , Connection::getQueryLog());
+        if (Configuration::SHOW_SQL_QUERY) {
+            $queries = array_map(function ($q) {
+                $lines = explode("\n", $q);
+                return '<pre>' . (substr($lines[1], 0, 7) == 'Params:' ? 'Sent ' . $lines[0] : $lines[1]) . '</pre>';
+            }, Connection::getQueryLog());
             echo implode(PHP_EOL . PHP_EOL, $queries);
         }
     }
@@ -110,4 +131,13 @@ class App
     {
         return $this->auth;
     }
+
+    /**
+     * @return LinkGenerator
+     */
+    public function getLinkGenerator(): LinkGenerator
+    {
+        return $this->linkGenerator;
+    }
+
 }

@@ -29,7 +29,7 @@ class HomeController extends AControllerBase
      */
     public function index(): Response
     {
-        return $this->html();
+        return $tshis->html();
     }
 
     /**

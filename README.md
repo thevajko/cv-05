@@ -22,6 +22,8 @@ Momentálne je otvorená branch __SOLUTION__, ktorá obsahuje riešenie. _Štart
     * Pridajte možnosť vypnúť filtrovanie podľa roku
     * Logika filtrovania bude vo vlastnej triede
 
+Kód frameworku je kompletne okomentovaný. V prípade, že na pochopenie potrebujete dodatočné informácie,
+navštívte [WIKI stránky](https://github.com/thevajko/vaiicko/wiki/00-%C3%9Avodn%C3%A9-inform%C3%A1cie).
 
 ## Ako nájsť branch môjho cvičenia?
 Pokiaľ sa chcete dostať k riešeniu z cvičenia je potrebné otvoriť si príslušnú _branch_, ktorej názov sa skladá:
