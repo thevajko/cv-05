@@ -11,7 +11,15 @@ $persons = $data['persons'];
 ?>
 <div class="row">
     <div class="col">
-        <table>
+        <div class="d-flex gap-1 mb-2 align-items-center flex-wrap">
+            <strong>Filter:</strong>
+            <a href="<?= $link->url(["year" => null], appendParameters:true) ?>" class="btn btn-primary btn-sm">Všetky roky</a>
+            <?php foreach ($data['yearsArray'] as $year) { ?>
+                <a href="<?= $link->url(["year" =>  $year], appendParameters:true) ?>" class="btn btn-<?= $data['selectedYear'] == $year ? "success" : "primary" ?> btn-sm"><?php echo $year?></a>
+            <?php } ?>
+        </div>
+
+        <table class="table table-striped">
             <tr>
                 <th><a href="<?= $link->url(["sort" => "lastname"], appendParameters:true) ?>">Priezvisko</a></th>
                 <th><a href="<?= $link->url(["sort" => "name"], appendParameters:true) ?>">Meno</a></th>
@@ -29,11 +37,6 @@ $persons = $data['persons'];
                 </tr>
             <?php } ?>
         </table>
-        <div class="d-flex gap-1">
-            <a href="<?= $link->url(["year" => null], appendParameters:true) ?>" class="btn btn-primary">Všetky roky</a>
-            <?php foreach ($data['yearsArray'] as $year) { ?>
-                <a href="<?= $link->url(["year" =>  $year], appendParameters:true) ?>" class="btn btn-primary"><?php echo $year?></a>
-            <?php } ?>
-        </div>
+
     </div>
 </div>

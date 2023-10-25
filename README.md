@@ -3,26 +3,32 @@ Momentálne je otvorená branch __SOLUTION__, ktorá obsahuje riešenie. _Štart
 
 ## Úlohy
 
-1. Premiestnite funkcionalitu pre výpočet faktoriálu do samostatnej triedy `Calculation`
-   * Zobrazte výpočet faktoriálu na vlastnej stránke z ohľadom na architektúru __MVC__.
-2. Doplňte do stránky výpis 10 nadpisov.
-   * Použite ľubovolný HTML nadpis a v texte každého uveďte jeho číslo.
-3. Z predchádzajúceho cvičenia skopírujte triedu pre _načítanie osôb_, _výpočet štatistík_ a jej _model_. Pozor na doplnenie do správneho namespace.
-   * Pre osoby vytvorte samostatný controller 
-     * Index bude zobrazovať zatiaľ iba zoznam osôb v podobe HTML zoznamu
-     * Štatistiky budú na samostatnej stránke
+1. Implementujte triedu `Calculation`, ktorá bude mať metódu na výpočet faktoriálu. 
+   * Môžte použiť algoritmus z cvičenia 4.
+   * Zobrazte výpočet faktoriálu na vlastnej stránke s využitím __MVC__ architektúry webu.
+2. Doplňte ďalšou podstránku, ktorá zobrazí v cykle 10 nadpisov.
+   * Použite ľubovolný HTML nadpis a v texte každého uveďte jeho poradové číslo.
+3. Z predchádzajúceho cvičenia skopírujte triedy pre _načítanie osôb_, _výpočet štatistík_ a _model_-ovú triedu. Pozor na doplnenie do správneho namespace.
+   * Pre osoby vytvorte samostatný controller.
+   * Načítajte osoby zo súboru `data/osoby.csv`.
+   * Akcia `index` zobrazí textový zoznam načítaných osôb.
 4. Osoby zobrazte v HTML tabuľke.
-    * Tabuľka bude mať hlavičku
-    * Na hlavičku sa bude dať kliknúť, a to nám zoradí tabuľku podla daného stĺpca. Logika zoraďovania bude v extra triede.
-5. Filtrovanie podľa roku
-    * Pod tabuľku vypíšte roky, ktoré majú osoby v zozname (bez duplicít)
-    * Kliknutím na daný rok, zobrazte iba tie osoby, ktoré tento rok majú
-    * Nezabudnite, že zoraďovanie tabuľky musí fungovať aj s filtrom rokov
-    * Pridajte možnosť vypnúť filtrovanie podľa roku
-    * Logika filtrovania bude vo vlastnej triede
+   * Tabuľka bude mať hlavičku a telo.
+   * Bude obsahovať stĺpce: `Meno`, `Priezvisko`, `Rok narodenia`, `Vek`, `Pohlavie`.
+5. Zoraďovanie tabuľky
+   * Po kliknutí na hlavičku tabuľky sa dáta v tabuľke zoradia podľa príslušného stĺpca vzostupne.
+6. Filtrovanie podľa roku
+    * Nad tabuľku vypíšte zoznam rokov narodenia, ktoré majú osoby v zozname (bez duplicít).
+    * Kliknutím na daný rok, zobrazte iba tie osoby, ktoré sa narodili v danom roku.
+      * Nezabudnite, že zoraďovanie tabuľky musí fungovať aj s filtrom rokov.
+      * Pridajte možnosť vypnúť filtrovanie podľa roku
 
-Kód frameworku je kompletne okomentovaný. V prípade, že na pochopenie potrebujete dodatočné informácie,
-navštívte [WIKI stránky](https://github.com/thevajko/vaiicko/wiki/00-%C3%9Avodn%C3%A9-inform%C3%A1cie).
+### Ukážka tabuľky
+![data/zadanie1.png](data/zadanie1.png)
+
+### Tabuľka s filtrom
+![data/zadanie2.png](data/zadanie2.png)
+
 
 ## Ako nájsť branch môjho cvičenia?
 Pokiaľ sa chcete dostať k riešeniu z cvičenia je potrebné otvoriť si príslušnú _branch_, ktorej názov sa skladá:

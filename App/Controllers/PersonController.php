@@ -32,7 +32,8 @@ class PersonController extends AControllerBase
 
         return $this->html([
             'persons' => $persons,
-            'yearsArray' => $yearsArray
+            'yearsArray' => $yearsArray,
+            'selectedYear' => $filterYear,
         ]);
 
     }
