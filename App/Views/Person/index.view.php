@@ -13,11 +13,11 @@ $persons = $data['persons'];
     <div class="col">
         <table>
             <tr>
-                <th><a href="<?= $link->url(["sort" => "lastname", "order" => $data['sortingOrder']], appendParameters:true) ?>">Priezvisko</a></th>
-                <th><a href="<?= $link->url(["sort" => "name", "order" => $data['sortingOrder']], appendParameters:true) ?>">Meno</a></th>
-                <th><a href="<?= $link->url(["sort" => "year", "order" => $data['sortingOrder']], appendParameters:true) ?>">Rok narodenia</a></th>
-                <th><a href="<?= $link->url(["sort" => "year", "order" => $data['sortingOrder']], appendParameters:true) ?>">Vek</a></th>
-                <th><a href="<?= $link->url(["sort" => "sex", "order" => $data['sortingOrder']], appendParameters:true) ?>">Pohlavie</a></th>
+                <th><a href="<?= $link->url(["sort" => "lastname"], appendParameters:true) ?>">Priezvisko</a></th>
+                <th><a href="<?= $link->url(["sort" => "name"], appendParameters:true) ?>">Meno</a></th>
+                <th><a href="<?= $link->url(["sort" => "year"], appendParameters:true) ?>">Rok narodenia</a></th>
+                <th><a href="<?= $link->url(["sort" => "year"], appendParameters:true) ?>">Vek</a></th>
+                <th><a href="<?= $link->url(["sort" => "sex"], appendParameters:true) ?>">Pohlavie</a></th>
             </tr>
             <?php foreach ($persons as $person) { ?>
                 <tr>

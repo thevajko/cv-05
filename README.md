@@ -14,7 +14,6 @@ Momentálne je otvorená branch __SOLUTION__, ktorá obsahuje riešenie. _Štart
 4. Osoby zobrazte v HTML tabuľke.
     * Tabuľka bude mať hlavičku
     * Na hlavičku sa bude dať kliknúť, a to nám zoradí tabuľku podla daného stĺpca. Logika zoraďovania bude v extra triede.
-    * Následne doplníme zoraďovanie oboma smermi
 5. Filtrovanie podľa roku
     * Pod tabuľku vypíšte roky, ktoré majú osoby v zozname (bez duplicít)
     * Kliknutím na daný rok, zobrazte iba tie osoby, ktoré tento rok majú

@@ -18,10 +18,9 @@ class PersonController extends AControllerBase
         $persons = PersonsLoader::loadPersonsFromCSV("data/osoby.csv");
 
         $sortBy = $this->request()->getValue('sort');
-        $sortingOrder = $this->request()->getValue('order');
 
         // sorts the persons in array
-        $persons = PersonSorter::sort($persons, !empty($sortBy) ? $sortBy : "s", $sortingOrder );
+        $persons = PersonSorter::sort($persons, !empty($sortBy) ? $sortBy : "s", 1);
 
         $yearsArray = PersonYearFilter::getYearsArray($persons);
         $filterYear = $this->request()->getValue('year');
@@ -30,13 +29,10 @@ class PersonController extends AControllerBase
             $persons = PersonYearFilter::filterByYear($persons, $filterYear);
         }
 
-        $sortingOrder = $sortingOrder == 1 ? -1 : 1;
 
         return $this->html([
             'persons' => $persons,
-            'sortingOrder' => $sortingOrder,
-            'yearsArray' => $yearsArray,
-            'request' => $this->request()
+            'yearsArray' => $yearsArray
         ]);
 
     }
