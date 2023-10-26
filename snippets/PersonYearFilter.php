@@ -1,7 +1,5 @@
 <?php
 
-namespace App\Helpers;
-
 /**
  * Contains loginc needed to show and filter persons by year
  */

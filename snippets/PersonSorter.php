@@ -1,9 +1,5 @@
 <?php
 
-namespace App\Helpers;
-
-use App\Models\Person;
-
 /**
  * Separate class, so sorting logic is not part of page code
  */
