@@ -1,4 +1,9 @@
 <?php
+
+namespace App\Helpers;
+
+use App\Models\Person;
+
 /**
  * Separate class, so sorting logic is not part of page code
  */
@@ -9,7 +14,7 @@ class PersonSorter
      * @param $array array to sort
      * @param $param attribute name for sorting
      * @param $asc order of sorting. 1=ASC -1=DESC
-     * @return Osoba[]
+     * @return Person[]
      */
     public static function sort($array, $param, $asc){
         // Collator is needed to correctly sort strings with diacritics
