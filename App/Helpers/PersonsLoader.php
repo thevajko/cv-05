@@ -1,5 +1,9 @@
 <?php
 
+namespace App\Helpers;
+
+use App\Models\Person;
+
 /**
  * Separate class, so loading logic is not part of page code
  */
@@ -10,7 +14,8 @@ class PersonsLoader
      * @param $filePath
      * @return Person[]
      */
-    public static function loadPersonsFromCSV($filePath) {
+    public static function loadPersonsFromCSV($filePath)
+    {
 
         // array to return with persons
         $persons = [];
@@ -20,9 +25,9 @@ class PersonsLoader
         $allLines = explode(PHP_EOL, $wholeFile);
 
         // iterate through all ines
-        foreach ( $allLines as $line) {
-            $personData =  explode(";", $line);
-            $persons[] = new Person($personData[0],$personData[1],$personData[2],$personData[3]);
+        foreach ($allLines as $line) {
+            $personData = explode(";", $line);
+            $persons[] = new Person($personData[0], $personData[1], $personData[2], $personData[3]);
         }
 
         return $persons;

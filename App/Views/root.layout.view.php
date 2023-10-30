@@ -27,6 +27,12 @@
             <li class="nav-item">
                 <a class="nav-link" href="<?= $link->url("home.contact") ?>">Kontakt</a>
             </li>
+            <li class="nav-item">
+                <a class="nav-link" href="<?= $link->url("home.factorial") ?>">Faktoriál</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="<?= $link->url("home.headings") ?>">Nadpisy</a>
+            </li>
         </ul>
         <?php if ($auth->isLogged()) { ?>
             <span class="navbar-text">Prihlásený používateľ: <b><?= $auth->getLoggedUserName() ?></b></span>
