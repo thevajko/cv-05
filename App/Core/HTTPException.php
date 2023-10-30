@@ -2,8 +2,6 @@
 
 namespace App\Core;
 
-use App\Config\Configuration;
-
 class HTTPException extends \Exception
 {
     /**
@@ -84,7 +82,6 @@ class HTTPException extends \Exception
 
     public static function from(\Throwable $exception, int $statusCode = 500): HTTPException
     {
-        return new HTTPException($statusCode, $exception->getMessage() ? $exception->getMessage() :  self::$statusCodeMessages[$statusCode], $exception);
+        return new HTTPException($statusCode, null, $exception);
     }
-
 }
