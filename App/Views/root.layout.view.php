@@ -25,6 +25,9 @@
         </a>
         <ul class="navbar-nav me-auto">
             <li class="nav-item">
+                <a class="nav-link" href="<?= $link->url("home.factorial") ?>">Faktoriál</a>
+            </li>
+            <li class="nav-item">
                 <a class="nav-link" href="<?= $link->url("home.contact") ?>">Kontakt</a>
             </li>
         </ul>
