@@ -5,13 +5,14 @@ Momentálne je otvorená branch __MAIN__, ktorá obsahuje štarter. _Riešenie_ 
 
 1. Implementujte triedu `Calculation`, ktorá bude mať metódu na výpočet faktoriálu. 
    * Môžte použiť algoritmus z cvičenia 4.
-   * Zobrazte výpočet faktoriálu na vlastnej stránke s využitím __MVC__ architektúry webu.
-2. Doplňte ďalšou podstránku, ktorá zobrazí v cykle 10 nadpisov.
-   * Použite ľubovolný HTML nadpis a v texte každého uveďte jeho poradové číslo.
-3. Z priečinku `snippets` premiestnite do projektu triedy na _načítanie osôb_, _výpočet štatistík_ a _model_-ovú triedu. Pozor na doplnenie do správneho namespace.
+   * Zobrazte výpočet faktoriálu na vlastnej stránke s využitím __MVC__ architektúry.
+2. Doplňte ďalšiu podstránku, ktorá zobrazí v cykle 10 nadpisov.
+   * Použite ľubovolnú HTML značku pre nadpis a v texte každého uveďte jeho poradové číslo.
+3. Z priečinku `snippets` premiestnite do projektu triedy na _načítanie osôb_, _výpočet štatistík_ a _fitrovanie_ a _triedenie_. Pozor na doplnenie do správneho namespace.
+   * Vytvorte model pre entitu `Person`.
    * Pre osoby vytvorte samostatný controller.
    * Načítajte osoby zo súboru `data/osoby.csv`.
-   * Akcia `index` zobrazí textový zoznam načítaných osôb.
+   * Vytvorte akciu `index`, ktorá zobrazí textový zoznam načítaných osôb.
 4. Osoby zobrazte v HTML tabuľke.
    * Tabuľka bude mať hlavičku a telo.
    * Bude obsahovať stĺpce: `Meno`, `Priezvisko`, `Rok narodenia`, `Vek`, `Pohlavie`.
