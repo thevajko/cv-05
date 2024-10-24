@@ -28,6 +28,12 @@
                 <a class="nav-link" href="<?= $link->url("home.factorial") ?>">Faktoriál</a>
             </li>
             <li class="nav-item">
+                <a class="nav-link" href="<?= $link->url("home.headings") ?>">Nadpisy</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="<?= $link->url("person.") ?>">Osoby</a>
+            </li>
+            <li class="nav-item">
                 <a class="nav-link" href="<?= $link->url("home.contact") ?>">Kontakt</a>
             </li>
         </ul>

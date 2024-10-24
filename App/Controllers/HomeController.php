@@ -48,4 +48,10 @@ class HomeController extends AControllerBase
             'result' => Calculations::factorial(12)
         ]);
     }
+
+    public function headings() : Response {
+        return $this->html([
+            'count' => 7
+        ]);
+    }
 }
