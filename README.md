@@ -8,7 +8,7 @@ Momentálne je otvorená branch __SOLUTION__, ktorá obsahuje riešenie. _Štart
     * Zobrazte výpočet faktoriálu na vlastnej stránke s využitím __MVC__ architektúry webu.
 2. Doplňte ďalšou podstránku, ktorá zobrazí v cykle 10 nadpisov.
     * Použite ľubovolný HTML nadpis a v texte každého uveďte jeho poradové číslo.
-3. Z priečinku `snippets` premiestnite do projektu triedy na _načítanie osôb_, _výpočet štatistík_ a _model_-ovú triedu. Pozor na doplnenie do správneho namespace.
+3. Z priečinku `snippets` premiestnite do projektu triedu `PersonHelper`. Doplňte správny namespace.
     * Pre osoby vytvorte samostatný controller.
     * Načítajte osoby zo súboru `data/osoby.csv`.
     * Akcia `index` zobrazí textový zoznam načítaných osôb.

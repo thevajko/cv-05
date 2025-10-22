@@ -22,6 +22,7 @@ class PersonController extends BaseController
     public function index(Request $request): Response
     {
         // loads all persons from file
+        // path is relative to the public directory
         $persons = PersonHelper::loadFromCsvFile("../data/osoby.csv");
 
         $sortBy = $request->get('sort');
@@ -45,7 +46,8 @@ class PersonController extends BaseController
      * @return Response The response object containing the rendered HTML for the statistics page.
      */
     public function statistics() : Response {
-
+        // loads all persons from file
+        // path is relative to the public directory
         $persons = PersonHelper::loadFromCsvFile("../data/osoby.csv");
 
         $youngest = PersonHelper::getYoungest($persons);
