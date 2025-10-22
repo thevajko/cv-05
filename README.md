@@ -1,18 +1,17 @@
 # VAII Cvičenie 05
-Momentálne je otvorená branch __MAIN__, ktorá obsahuje štarter. _Riešenie_ obsahuje branch  __SOLUTION__.
+Momentálne je otvorená branch __SOLUTION__, ktorá obsahuje riešenie. _Štartér_ obsahuje branch  __MAIN__.
 
 ## Úlohy
 
 1. Implementujte triedu `Calculation`, ktorá bude mať metódu na výpočet faktoriálu.
     * Môžte použiť algoritmus z cvičenia 4.
-    * Zobrazte výpočet faktoriálu na vlastnej stránke s využitím __MVC__ architektúry.
-2. Doplňte ďalšiu podstránku, ktorá zobrazí v cykle 10 nadpisov.
-    * Použite ľubovolnú HTML značku pre nadpis a v texte každého uveďte jeho poradové číslo.
-3. Z priečinku `snippets` premiestnite do projektu triedu `PersonHelper`. Doplňte správny namespace.
-    * Vytvorte model pre entitu `Person`.
+    * Zobrazte výpočet faktoriálu na vlastnej stránke s využitím __MVC__ architektúry webu.
+2. Doplňte ďalšou podstránku, ktorá zobrazí v cykle 10 nadpisov.
+    * Použite ľubovolný HTML nadpis a v texte každého uveďte jeho poradové číslo.
+3. Z priečinku `snippets` premiestnite do projektu triedy na _načítanie osôb_, _výpočet štatistík_ a _model_-ovú triedu. Pozor na doplnenie do správneho namespace.
     * Pre osoby vytvorte samostatný controller.
     * Načítajte osoby zo súboru `data/osoby.csv`.
-    * Vytvorte akciu `index`, ktorá zobrazí zoznam načítaných osôb.
+    * Akcia `index` zobrazí textový zoznam načítaných osôb.
 4. Osoby zobrazte v HTML tabuľke.
     * Tabuľka bude mať hlavičku a telo.
     * Bude obsahovať stĺpce: `Meno`, `Priezvisko`, `Rok narodenia`, `Vek`, `Pohlavie`.
@@ -25,10 +24,11 @@ Momentálne je otvorená branch __MAIN__, ktorá obsahuje štarter. _Riešenie_ 
         * Pridajte možnosť vypnúť filtrovanie podľa roku
 
 ### Ukážka tabuľky
-![zadanie1.png](zadanie1.png)
+![data/zadanie1.png](zadanie1.png)
 
 ### Tabuľka s filtrom
-![zadanie2.png](zadanie2.png)
+![data/zadanie2.png](zadanie2.png)
+
 
 ## Ako nájsť branch môjho cvičenia?
 Pokiaľ sa chcete dostať k riešeniu z cvičenia je potrebné otvoriť si príslušnú _branch_, ktorej názov sa skladá:
