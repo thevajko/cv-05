@@ -30,7 +30,22 @@
         </a>
         <ul class="navbar-nav me-auto">
             <li class="nav-item">
-                <a class="nav-link" href="<?= $link->url('home.contact') ?>">Contact</a>
+                <a class="nav-link" href="<?= $link->url("home.factorial") ?>">Faktoriál</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="<?= $link->url("home.headings") ?>">Nadpisy</a>
+            </li>
+            <li class="nav-item">
+                <div class="dropdown">
+                    <a class="btn btn-secondary dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                        Osoby
+                    </a>
+
+                    <ul class="dropdown-menu">
+                        <li><a class="dropdown-item" href="<?= $link->url("person.index") ?>">Zoznam</a></li>
+                        <li><a class="dropdown-item" href="<?= $link->url("person.statistics") ?>">Štatistiky</a></li>
+                    </ul>
+                </div>
             </li>
         </ul>
         <?php if ($auth?->isLogged()) { ?>
