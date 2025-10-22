@@ -2,6 +2,7 @@
 
 namespace App\Controllers;
 
+use App\Helpers\Calculations;
 use Framework\Core\BaseController;
 use Framework\Http\Request;
 use Framework\Http\Responses\Response;
@@ -54,4 +55,32 @@ class HomeController extends BaseController
     {
         return $this->html();
     }
+
+    /**
+     * Calculates the factorial of a number and displays the result.
+     *
+     * This action computes the factorial of 12 and returns an HTML view with the result.
+     *
+     * @return Response The response object containing the rendered HTML with the factorial result.
+     */
+    public function factorial() : Response
+    {
+        $number = 12;
+        $result = Calculations::factorial($number);
+        return $this->html(compact('number', 'result'));
+    }
+
+    /**
+     * Displays headings based on a specified count.
+     *
+     * This action serves an HTML view that includes headings, with the count set to 10.
+     *
+     * @return Response The response object containing the rendered HTML with the headings.
+     */
+    public function headings() : Response {
+        return $this->html([
+            'count' => 10
+        ]);
+    }
+
 }
