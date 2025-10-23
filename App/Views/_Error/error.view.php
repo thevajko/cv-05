@@ -1,13 +1,11 @@
 <?php
 
-use Framework\Support\View;
-use Framework\Http\HttpException;
-
-/** @var $exception */
+/** @var \Framework\Http\HttpException $exception */
 /** @var bool $showDetail */
-/** @var View $view */
+/** @var \Framework\Support\View $view */
 
-$view->layout(null);
+$view->setLayout(null);
+
 ?>
 
 <h1><?= $exception->getCode() . " - " . $exception->getMessage() ?></h1>
