@@ -38,6 +38,9 @@
             <li class="nav-item">
                 <a class="nav-link" href="<?= $link->url('home.headings') ?>">Headings</a>
             </li>
+            <li class="nav-item">
+                <a class="nav-link" href="<?= $link->url('home.osoby') ?>">Osoby</a>
+            </li>
         </ul>
         <?php if ($auth?->isLogged()) { ?>
             <span class="navbar-text">Logged in user: <b><?= $auth?->user?->name ?></b></span>

@@ -3,9 +3,11 @@
 namespace App\Controllers;
 
 use App\Helpers\Calculations;
+use App\Helpers\OsobaLoader;
 use Framework\Core\BaseController;
 use Framework\Http\Request;
 use Framework\Http\Responses\Response;
+use App\Models\Osoba;
 
 /**
  * Class HomeController
@@ -70,5 +72,17 @@ class HomeController extends BaseController
     public function headings(Request $request): Response
     {
         return $this->html();
+    }
+
+    /**
+     * Zobrazí zoznam osôb v HTML tabuľke.
+     *
+     * @return Response
+     */
+    public function osoby(Request $request): Response
+    {
+        $cesta = '../data/osoby.csv';
+        $osoby = OsobaLoader::nacitajZoSuboru($cesta);
+        return $this->html(['osoby' => $osoby]);
     }
 }
