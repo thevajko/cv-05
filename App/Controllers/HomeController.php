@@ -4,6 +4,7 @@ namespace App\Controllers;
 
 use App\Helpers\Calculations;
 use App\Helpers\OsobaLoader;
+use App\Helpers\OsobaSorter;
 use Framework\Core\BaseController;
 use Framework\Http\Request;
 use Framework\Http\Responses\Response;
@@ -81,8 +82,15 @@ class HomeController extends BaseController
      */
     public function osoby(Request $request): Response
     {
-        $cesta = '../data/osoby.csv';
+        $cesta = __DIR__ . '/../../data/osoby.csv';
         $osoby = OsobaLoader::nacitajZoSuboru($cesta);
-        return $this->html(['osoby' => $osoby]);
+        $sortBy = $_GET['sortBy'] ?? 'vek';
+        $sortDir = $_GET['sortDir'] ?? 'desc';
+        $osoby = OsobaSorter::zorad($osoby, $sortBy, $sortDir);
+        return $this->html([
+            'osoby' => $osoby,
+            'sortBy' => $sortBy,
+            'sortDir' => $sortDir
+        ]);
     }
 }
