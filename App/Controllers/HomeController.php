@@ -61,4 +61,14 @@ class HomeController extends BaseController
         $vysledok = Calculations::factorial(5);
         return $this->html(["vysledok" => $vysledok]);
     }
+
+    /**
+     * Displays a page with 10 HTML headings, each with its order number.
+     *
+     * @return Response The response object containing the rendered HTML for the headings page.
+     */
+    public function headings(Request $request): Response
+    {
+        return $this->html();
+    }
 }
