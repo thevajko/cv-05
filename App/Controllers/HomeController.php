@@ -60,4 +60,13 @@ class HomeController extends BaseController
         $vysledok = \App\Helpers\Calculations::factorial(5);
         return $this->html([ "vysledok" => $vysledok ]);
     }
+
+    public function nadpisy(Request $request): Response
+    {
+        $nadpisy = [];
+        for ($i = 1; $i <= 10; $i++) {
+            $nadpisy[] = "Nadpis číslo $i";
+        }
+        return $this->html(["nadpisy" => $nadpisy]);
+    }
 }
