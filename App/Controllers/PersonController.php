@@ -12,7 +12,20 @@ class PersonController extends BaseController
     public function index(Request $request): Response
     {
         $file = __DIR__ . '/../../data/osoby.csv';
-        $people = PersonHelper::loadFromCsvFile($file);
-        return $this->html(['people' => $people]);
+        $people = \App\Helpers\PersonHelper::loadFromCsvFile($file);
+
+        // Zoradenie podľa query parametrov
+        $sort = $request->get('sort', 'surname'); // default: priezvisko
+        $asc = (int)$request->get('asc', 1); // default: vzostupne
+        $allowed = ['name', 'surname', 'sex', 'year'];
+        if (in_array($sort, $allowed, true)) {
+            $people = \App\Helpers\PersonHelper::sort($people, $sort, $asc);
+        }
+
+        return $this->html([
+            'people' => $people,
+            'sort' => $sort,
+            'asc' => $asc
+        ]);
     }
 }
