@@ -54,4 +54,10 @@ class HomeController extends BaseController
     {
         return $this->html();
     }
+
+    public function faktorial(Request $request): Response
+    {
+        $vysledok = \App\Helpers\Calculations::factorial(5);
+        return $this->html([ "vysledok" => $vysledok ]);
+    }
 }
