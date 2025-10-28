@@ -62,4 +62,15 @@ class HomeController extends BaseController
             "vysledok" => Calculations::factorial(5)
         ]);
     }
+
+    public function nadpisy(Request $request): Response
+    {
+        $headings = [];
+        for ($i = 1; $i <= 10; $i++) {
+            $headings[] = "Nadpis číslo $i";
+        }
+        return $this->html([
+            'headings' => $headings
+        ]);
+    }
 }
