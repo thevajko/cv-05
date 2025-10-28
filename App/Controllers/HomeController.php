@@ -2,6 +2,7 @@
 
 namespace App\Controllers;
 
+use App\Helpers\Calculations;
 use Framework\Core\BaseController;
 use Framework\Http\Request;
 use Framework\Http\Responses\Response;
@@ -53,5 +54,12 @@ class HomeController extends BaseController
     public function contact(Request $request): Response
     {
         return $this->html();
+    }
+
+    public function faktorial(Request $request): Response
+    {
+        return $this->html([
+            "vysledok" => Calculations::factorial(5)
+        ]);
     }
 }
