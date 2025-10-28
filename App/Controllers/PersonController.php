@@ -13,9 +13,19 @@ class PersonController extends BaseController
     {
         $file = __DIR__ . '/../../data/osoby.csv';
         $people = PersonHelper::loadFromCsvFile($file);
+
+        $sort = $request->get('sort') ?? 'surname';
+        $dir = strtolower($request->get('dir') ?? 'asc');
+        $asc = $dir === 'asc' ? 1 : -1;
+        $allowed = ['name', 'surname', 'year', 'sex'];
+        if (!in_array($sort, $allowed, true)) {
+            $sort = 'surname';
+        }
+        $people = PersonHelper::sort($people, $sort, $asc);
         return $this->html([
-            'people' => $people
+            'people' => $people,
+            'sort' => $sort,
+            'dir' => $dir
         ]);
     }
 }
-

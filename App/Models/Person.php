@@ -6,46 +6,46 @@ namespace App\Models;
 
 class Person
 {
-    private string $firstName;
-    private string $lastName;
-    private string $gender;
-    private int $yearOfBirth;
+    private ?string $name;
+    private ?string $surname;
+    private ?string $sex;
+    private $year;
 
-    public function __construct(string $firstName, string $lastName, string $gender, int $yearOfBirth)
+    public function __construct($name, $surname, $sex, $year)
     {
-        $this->firstName = $firstName;
-        $this->lastName = $lastName;
-        $this->gender = $gender;
-        $this->yearOfBirth = $yearOfBirth;
+        $this->name = $name;
+        $this->surname = $surname;
+        $this->sex = $sex;
+        $this->year = $year;
     }
 
-    public function getFirstName(): string
+    public function getName(): ?string
     {
-        return $this->firstName;
+        return $this->name;
     }
 
-    public function getLastName(): string
+    public function getSurname(): ?string
     {
-        return $this->lastName;
+        return $this->surname;
     }
 
-    public function getGender(): string
+    public function getSex(): ?string
     {
-        return $this->gender;
+        return $this->sex;
     }
 
-    public function getYearOfBirth(): int
+    public function getYear()
     {
-        return $this->yearOfBirth;
+        return $this->year;
     }
 
     public function getAge(): ?int
     {
+        $year = (int)$this->year;
         $currentYear = (int)date('Y');
-        if ($this->yearOfBirth > 0 && $this->yearOfBirth <= $currentYear) {
-            return $currentYear - $this->yearOfBirth;
+        if ($year > 0 && $year <= $currentYear) {
+            return $currentYear - $year;
         }
-        return null; // invalid year
+        return null;
     }
 }
-
