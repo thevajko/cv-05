@@ -64,4 +64,17 @@ class HomeController extends BaseController
 
         return $this->html(['cislo' => $cislo, 'faktorial' => $faktorial]);
     }
+
+    /**
+     * Displays a page with a list of headings (nadpisy).
+     * The view will render $count headings; default is 10.
+     *
+     * @param Request $request
+     * @return Response
+     */
+    public function nadpisy(Request $request): Response
+    {
+        $count = 10;
+        return $this->html(['count' => $count]);
+    }
 }
