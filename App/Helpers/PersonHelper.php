@@ -1,5 +1,5 @@
 <?php
-
+namespace App\Helpers;
 
 use App\Models\Person;
 use Collator;
