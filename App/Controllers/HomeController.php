@@ -22,10 +22,11 @@ class HomeController extends BaseController
      *
      * In this implementation, all actions are authorized unconditionally.
      *
-     * @param string $action The action name to authorize.
+     * @param Request $request
+     * @param string $action
      * @return bool Returns true, allowing all actions.
      */
-    public function authorize(string $action): bool
+    public function authorize(Request $request, string $action): bool
     {
         return true;
     }

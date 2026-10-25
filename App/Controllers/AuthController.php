@@ -47,7 +47,7 @@ class AuthController extends BaseController
     {
         $logged = null;
         if ($request->hasValue('submit')) {
-            $logged = $this->app->getAuth()->login($request->value('login'), $request->value('password'));
+            $logged = $this->app->getAuthenticator()->login($request->value('login'), $request->value('password'));
             if ($logged) {
                 return $this->redirect($this->url("admin.index"));
             }
@@ -67,7 +67,7 @@ class AuthController extends BaseController
      */
     public function logout(Request $request): Response
     {
-        $this->app->getAuth()->logout();
+        $this->app->getAuthenticator()->logout();
         return $this->html();
     }
 }

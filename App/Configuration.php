@@ -24,7 +24,7 @@ class Configuration
     /**
      * Version of the framework.
      */
-    public const FW_VERSION = '3.0.1';
+    public const FW_VERSION = '3.0.7';
 
     /**
      * Database connection settings.
@@ -72,4 +72,44 @@ class Configuration
      * Class name for the error handler. This class must implement the IHandleError interface.
      */
     public const ERROR_HANDLER_CLASS = ErrorHandler::class;
+
+    /**
+     * Directory for file uploads on the filesystem (uses OS-specific directory separators).
+     * Example on Linux:  public/uploads/
+     * Example on Windows: public\uploads\
+     */
+    public const UPLOAD_DIR = 'uploads' . DIRECTORY_SEPARATOR;
+
+    /**
+     * Public URL path prefix for uploaded files (always uses forward slashes for web URLs).
+     * Example: /uploads/
+     */
+    public const UPLOAD_URL = '/uploads/';
+
+    /**
+     * Flag to require a whitelist of properties for Model::setFromRequest() (protection against mass assignment).
+     * If true, the model must define `protected static ?array $fillable = [...]` or the allowed fields must be passed
+     * to setFromRequest(), otherwise an exception is thrown.
+     */
+    public const MODEL_REQUIRE_FILLABLE = true;
+
+    /**
+     * Optional Content-Security-Policy sent with HTML (view) responses as an extra protection against XSS. Null means
+     * that no header is sent. Example policy that allows only own scripts and the CDN used for Bootstrap (inline
+     * scripts and onclick="..." are forbidden):
+     *
+     * "default-src 'self'; script-src 'self' https://cdn.jsdelivr.net; style-src 'self' https://cdn.jsdelivr.net; "
+     * . "img-src 'self' data: https:; object-src 'none'; base-uri 'self'"
+     */
+    public const CONTENT_SECURITY_POLICY = null;
+
+    /**
+     * Flag to send the policy above in the report-only mode (Content-Security-Policy-Report-Only header). In this
+     * mode, the browser does not block anything, it only reports violations in the developer console. Set to false
+     * to enforce the policy.
+     */
+    public const CONTENT_SECURITY_POLICY_REPORT_ONLY = true;
+
+    // Session key for storing the user identity
+    public const IDENTITY_SESSION_KEY = 'fw.session.user.identity';
 }
