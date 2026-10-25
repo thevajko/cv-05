@@ -1,7 +1,7 @@
 <?php
 
 /** @var string $contentHTML */
-/** @var \Framework\Core\IAuthenticator $auth */
+/** @var \Framework\Auth\AppUser $user */
 /** @var \Framework\Support\LinkGenerator $link */
 ?>
 <!DOCTYPE html>
@@ -48,8 +48,8 @@
                 </div>
             </li>
         </ul>
-        <?php if ($auth?->isLogged()) { ?>
-            <span class="navbar-text">Logged in user: <b><?= $auth?->user?->name ?></b></span>
+        <?php if ($user->isLoggedIn()) { ?>
+            <span class="navbar-text">Logged in user: <b><?= $user->getName() ?></b></span>
             <ul class="navbar-nav ms-auto">
                 <li class="nav-item">
                     <a class="nav-link" href="<?= $link->url('auth.logout') ?>">Log out</a>

@@ -28,7 +28,7 @@ class PersonController extends BaseController
         $sortBy = $request->get('sort');
 
         // sorts the persons in array
-        $persons = PersonHelper::sort($persons, !empty($sortBy) ? $sortBy : "s", 1);
+        $persons = PersonHelper::sort($persons, !empty($sortBy) ? $sortBy : "surname", 1);
 
         $yearsArray = PersonHelper::getYearsArray($persons);
         $filterYear = $request->get('year');
@@ -37,7 +37,12 @@ class PersonController extends BaseController
             $persons = PersonHelper::filterByYear($persons, $filterYear);
         }
 
-        return $this->html(compact('persons', 'yearsArray', 'filterYear', 'sortBy'));
+        return $this->html([
+            'persons' => $persons,
+            'yearsArray' => $yearsArray,
+            'selectedYear' => $filterYear,
+            'sort' => $sortBy,
+        ]);
     }
 
     /**

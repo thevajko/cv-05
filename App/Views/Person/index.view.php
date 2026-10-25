@@ -24,7 +24,7 @@ use Framework\Support\LinkGenerator;
 
         <table class="table table-striped">
             <tr>
-                <th><a href="<?= $link->url(["sort" => "lastname"], appendParameters:true) ?>">Priezvisko</a></th>
+                <th><a href="<?= $link->url(["sort" => "surname"], appendParameters:true) ?>">Priezvisko</a></th>
                 <th><a href="<?= $link->url(["sort" => "name"], appendParameters:true) ?>">Meno</a></th>
                 <th><a href="<?= $link->url(["sort" => "year"], appendParameters:true) ?>">Rok narodenia</a></th>
                 <th><a href="<?= $link->url(["sort" => "year"], appendParameters:true) ?>">Vek</a></th>
